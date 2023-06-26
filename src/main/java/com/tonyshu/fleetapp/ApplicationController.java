@@ -14,7 +14,8 @@ public class ApplicationController {
 
     //set the home page to index.html
     @GetMapping("/index")
-    public String goHone(){
+    public String goHome(){
         return "index";
     }
+
 }
