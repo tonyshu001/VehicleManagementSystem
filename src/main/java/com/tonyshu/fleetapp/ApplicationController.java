@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ApplicationController {
 
+    //set the home page to index.html
     @GetMapping("/index")
     public String goHone(){
         return "index";
