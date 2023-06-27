@@ -391,7 +391,7 @@
       <section class="wrapper">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="page-header"><i class="fa fa fa-bars"></i> Pages</h3>
+            <h3 class="page-header"><i class="fa fa fa-bars"></i> List of Countries</h3>
             <ol class="breadcrumb">
               <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
               <li><i class="fa fa-bars"></i>Pages</li>
@@ -400,7 +400,30 @@
           </div>
         </div>
         <!-- page start-->
-          <h1>List of Countries</h1>
+          <div class="row">
+              <div class="col-lg-12">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" data-whatever="@mdo">New Country</button>
+          <table class="table">
+              <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Description</th>
+                  <th>Capital</th>
+                  <th>Code</th>
+              </tr>
+              </thead>
+              <tbody>
+<!--                    countries come from the controller getCountries-->
+                  <tr th:each="country:${countries}">
+                      <td th:text="${country.id}"></td>
+                      <td th:text="${country.description}"></td>
+                      <td th:text="${country.capital}"></td>
+                      <td th:text="${country.code}"></td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+          </div>
         <!-- page end-->
       </section>
     </section>
@@ -418,6 +441,57 @@
     </div>
   </section>
   <!-- container section end -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form th:action="@{countries/addNew}" method="post">
+                      <div class="form-group">
+                          <label for="country-description" class="col-form-label">Description:</label>
+                          <input type="text" class="form-control" id="country-description" name="description">
+<!--                          name needs to be the same as the attribute specified in model-->
+                      </div>
+
+                      <div class="form-group">
+                          <label for="country-capital" class="col-form-label">Capital:</label>
+                          <input type="text" class="form-control" id="country-capital" name="capital">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="country-code" class="col-form-label">Code:</label>
+                          <input type="text" class="form-control" id="country-code" name="code">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="country-continent" class="col-form-label">Continent:</label>
+                          <input type="text" class="form-control" id="country-continent" name="continent">
+                      </div>
+
+                      <div class="form-group">
+                          <label for="country-nationality" class="col-form-label">Nationality:</label>
+                          <input type="text" class="form-control" id="country-nationality" name="nationality">
+                      </div>
+
+
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </div>
+          </div>
+      </div>
+  </div>
   <!-- javascripts -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>

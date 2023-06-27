@@ -16,22 +16,13 @@ public class CountryService {
 	@Autowired
 	private CountryRepository countryRepository;
 	
-	//Get All Countrys
+	//Get All countries
 	public List<Country> findAll(){
 		return countryRepository.findAll();
 	}	
+
 	
-	//Get Country By Id
-	public Optional<Country> findById(int id) {
-		return countryRepository.findById(id);
-	}	
-	
-	//Delete Country
-	public void delete(int id) {
-		countryRepository.deleteById(id);
-	}
-	
-	//Update Country
+	//add a new country
 	public void save( Country country) {
 		countryRepository.save(country);
 	}
